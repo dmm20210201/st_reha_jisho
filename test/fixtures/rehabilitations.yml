@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  training_name: MyString
+  speech_pathological_findings: MyString
+  adaptation_precautions: MyText
+  items: MyText
+  training_content: MyText
+  training_image: MyString
+
+two:
+  training_name: MyString
+  speech_pathological_findings: MyString
+  adaptation_precautions: MyText
+  items: MyText
+  training_content: MyText
+  training_image: MyString

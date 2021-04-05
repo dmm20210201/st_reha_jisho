@@ -1,0 +1,2 @@
+class Rehabilitation < ApplicationRecord
+end
