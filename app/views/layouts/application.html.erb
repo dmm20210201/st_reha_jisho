@@ -12,14 +12,23 @@
   <body>
     <% if user_signed_in? %>
       <li>
+        <%= link_to '訓練一覧', rehabilitations_path %>
+      </li>
+      <li>
+        <%= link_to '新規投稿', rehabilitations_new_path %>
+      </li>
+      <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to 'About', homes_about_path %>
       </li>
       <li>
         <%= link_to "ログイン", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "新規登録", new_user_registration_path %>
       </li>
     <% end %>
     <%= yield %>
