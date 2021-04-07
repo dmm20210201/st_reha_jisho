@@ -6,7 +6,7 @@ class CreateRehabilitations < ActiveRecord::Migration[5.2]
       t.text :adaptation_precautions
       t.text :items
       t.text :training_content
-      t.string :training_image
+      t.string :training_image_id
 
       t.timestamps
     end

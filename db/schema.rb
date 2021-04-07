@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_095105) do
     t.text "adaptation_precautions"
     t.text "items"
     t.text "training_content"
-    t.string "training_image"
+    t.string "training_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

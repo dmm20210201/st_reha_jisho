@@ -1,2 +1,12 @@
-<h1>Rehabilitations#show</h1>
-<p>Find me in app/views/rehabilitations/show.html.erb</p>
+<div class="rehabilitation-body">
+  <p>訓練名：<%= @rehabilitation.training_name %></p>
+  <p>言語病理学的所見：<%= @rehabilitation.speech_pathological_findings %></p>
+  <p>適応・注意事項：<%= @rehabilitation.adaptation_precautions %></p>
+  <p>準備物：<%= @rehabilitation.items %></p>
+  <p>訓練内容：<%= @rehabilitation.training_content %></p>
+  <%= attachment_image_tag @rehabilitation, :training_image %>
+  </br>
+  <% if @rehabilitation.user == current_user %>
+    <%= link_to "削除", rehabilitations_path(@rehabilitation), method: :delete %>
+  <% end %>
+</div>
