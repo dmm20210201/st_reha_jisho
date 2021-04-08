@@ -27,7 +27,7 @@ class RehabilitationsController < ApplicationController
   def destroy
     @rehabilitation = Rehabilitation.find(params[:id])
     @rehabilitation.destroy
-    redirect_to rehabilitation_path
+    redirect_to rehabilitations_path
   end
 
   private

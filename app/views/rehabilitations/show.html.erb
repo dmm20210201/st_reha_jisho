@@ -7,6 +7,6 @@
   <%= attachment_image_tag @rehabilitation, :training_image %>
   </br>
   <% if @rehabilitation.user == current_user %>
-    <%= link_to "削除", rehabilitations_path(@rehabilitation), method: :delete %>
+    <%= link_to "削除", rehabilitation_path(@rehabilitation), method: :delete %>
   <% end %>
 </div>

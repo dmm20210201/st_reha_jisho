@@ -1,6 +1,6 @@
 <% @rehabilitations.each do |rehabilitation| %>
 <div>
-  <p>投稿ユーザー画像：<%= image_tag('sample-author1.jpg') %></p>
+  <!--<p>投稿ユーザー画像：<#%= attachment_image_tag rehabilitation.user, :profile_image, :size: "30x30", fallback: "no_image.jpg") %></p>-->
   <p>ユーザーネーム：<%= rehabilitation.user.name %></p>
   <p>訓練名：
     <%= link_to rehabilitation_path(rehabilitation.id) do %>
