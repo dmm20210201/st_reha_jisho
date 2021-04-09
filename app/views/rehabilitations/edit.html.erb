@@ -1,2 +1,17 @@
-<h1>Rehabilitations#edit</h1>
-<p>Find me in app/views/rehabilitations/edit.html.erb</p>
+<h1>訓練編集</h1>
+<%= form_with model:@rehabilitation,local:true do |f| %>
+  <h4>訓練名</h4>
+  <%= f.text_field :training_name %>
+  <h4>言語病理学的所見</h4>
+  <%= f.text_area :speech_pathological_findings %>
+  <h4>適応・注意事項</h4>
+  <%= f.text_area :adaptation_precautions %>
+  <h4>準備物</h4>
+  <%= f.text_area :items %>
+  <h4>訓練内容（手順・内容）</h4>
+  <%= f.text_area :training_content %>
+  <h4>参考画像</h4>
+  <!--<#%= f.attachment_image_tag :training_image %>-->
+  </br>
+  <%= f.submit '変更する' %>
+<% end %>

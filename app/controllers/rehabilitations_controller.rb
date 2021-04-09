@@ -19,6 +19,7 @@ class RehabilitationsController < ApplicationController
   end
 
   def edit
+    @rehabilitation = Rehabilitation.find(params[:id])
   end
 
   def update
