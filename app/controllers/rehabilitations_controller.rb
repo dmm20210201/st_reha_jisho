@@ -8,9 +8,9 @@ class RehabilitationsController < ApplicationController
   end
 
   def create
-    @rehabilitation = Rehabilitation.new(rehabilitation_params)
-    @rehabilitation.user_id = current_user.id
-    @rehabilitation.save
+    rehabilitation = Rehabilitation.new(rehabilitation_params)
+    rehabilitation.user_id = current_user.id
+    rehabilitation.save
     redirect_to rehabilitations_path
   end
 
@@ -23,11 +23,14 @@ class RehabilitationsController < ApplicationController
   end
 
   def update
+    rehabilitation = Rehabilitation.find(params[:id])
+    rehabilitation.update(rehabilitation_params)
+    redirect_to rehabilitation_path(rehabilitation.id)
   end
 
   def destroy
-    @rehabilitation = Rehabilitation.find(params[:id])
-    @rehabilitation.destroy
+    rehabilitation = Rehabilitation.find(params[:id])
+    rehabilitation.destroy
     redirect_to rehabilitations_path
   end
 

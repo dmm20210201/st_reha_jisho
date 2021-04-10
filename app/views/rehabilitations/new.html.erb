@@ -11,7 +11,7 @@
   <h4>訓練内容（手順・内容）</h4>
   <%= f.text_area :training_content %>
   <h4>参考画像</h4>
-  <%= f.attachment_field :training_image %></br>
+  <%= f.attachment_field :training_image, multiple: true %></br>
   </br>
   <%= f.submit '投稿する' %>
 <% end %>

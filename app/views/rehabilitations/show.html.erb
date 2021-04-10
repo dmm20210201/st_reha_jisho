@@ -4,11 +4,11 @@
   <p>適応・注意事項：<%= @rehabilitation.adaptation_precautions %></p>
   <p>準備物：<%= @rehabilitation.items %></p>
   <p>訓練内容：<%= @rehabilitation.training_content %></p>
-  <%= attachment_image_tag @rehabilitation, :training_image %>
-  </br>
+  <p><%= attachment_image_tag @rehabilitation, :training_image %></p>
+  <p>投稿日：<%= @rehabilitation.created_at.strftime('%Y/%m/%d') %></p>
   </br>
   <% if @rehabilitation.user == current_user %>
-    <%= link_to "編集", edit_rehabilitation_path(@rehabilitation) %>
-    <%= link_to "削除", rehabilitation_path(@rehabilitation), method: :delete %>
+    <%= link_to "編集", edit_rehabilitation_path(@rehabilitation.id) %>
+    <%= link_to "削除", rehabilitation_path(@rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>
 </div>
