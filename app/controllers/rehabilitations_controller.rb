@@ -1,6 +1,6 @@
 class RehabilitationsController < ApplicationController
   def index
-    @rehabilitations = Rehabilitation.all
+    @rehabilitations = Rehabilitation.all.page(params[:page]).reverse_order
   end
 
   def new

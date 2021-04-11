@@ -20,7 +20,10 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to '訓練一覧', rehabilitations_path,class: 'nav-link text-dark'%>
+                  <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to '訓練一覧', rehabilitations_path,class: 'nav-link text-dark' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to '新規投稿', new_rehabilitation_path,class: 'nav-link text-dark' %>
@@ -29,6 +32,9 @@
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-dark' %>
                 </li>
               <% else %>
+                <li class="nav-item">
+                  <%= link_to 'Top', root_path,class: 'nav-link text-dark' %>
+                </li>
                 <li class="nav-item">
                   <%= link_to 'About', homes_about_path,class: 'nav-link text-dark' %>
                 </li>

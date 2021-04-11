@@ -5,7 +5,7 @@
   <p>準備物：<%= @rehabilitation.items %></p>
   <p>訓練内容：<%= @rehabilitation.training_content %></p>
   <p><%= attachment_image_tag @rehabilitation, :training_image %></p>
-  <p>投稿日：<%= @rehabilitation.created_at.strftime('%Y/%m/%d') %></p>
+  <p>投稿日時：<%= @rehabilitation.created_at.to_s(:datetime) %></p>
   </br>
   <% if @rehabilitation.user == current_user %>
     <%= link_to "編集", edit_rehabilitation_path(@rehabilitation.id) %>

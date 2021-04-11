@@ -1,2 +1,48 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class='row'>
+    <div class='col-md-3'>
+      <h4><%= @user.name %></h4>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <h5><%= @user.affiliation %></h5>
+      <h5><%= @user.introduction %></h5>
+      <% if @user.id == current_user.id %>
+        <p><%= link_to "ユーザー情報編集", edit_user_path(@user.id) %></p>
+      <% end %>
+      </br>
+      <%= link_to "新規投稿する", new_rehabilitation_path, class: "btn btn-primary btn-lg" %>
+    </div>
+    <div class='col-md-9'>
+      <h2>投稿した訓練</h2>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>訓練名</th>
+            <th>いいね数</th>
+            <th>コメント数</th>
+            <th>投稿日時</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @rehabilitations.each do |rehabilitation| %>
+            <tr>
+              <td><%= link_to rehabilitation_path(rehabilitation.id) do %>
+                <%= rehabilitation.training_name %>
+                <% end %>
+              </td>
+              <td></td>
+              <td></td>
+              <td>投稿日時：<%= rehabilitation.created_at.to_s(:datetime) %></td>
+              <td><% if rehabilitation.user == current_user %>
+                <%= link_to "編集", edit_rehabilitation_path(rehabilitation.id) %></td>
+              <td><%= link_to "削除", rehabilitation_path(rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          <%= paginate @rehabilitations %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
