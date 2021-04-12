@@ -3,13 +3,13 @@
     <div class='col-md-3'>
       <h4><%= @user.name %></h4>
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-      <h5><%= @user.affiliation %></h5>
-      <h5><%= @user.introduction %></h5>
+      <h6><%= @user.affiliation %></h6>
+      <h6><%= @user.introduction %></h6>
       <% if @user.id == current_user.id %>
         <p><%= link_to "ユーザー情報編集", edit_user_path(@user.id) %></p>
       <% end %>
       </br>
-      <%= link_to "新規投稿する", new_rehabilitation_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to "訓練新規投稿", new_rehabilitation_path, class: "btn btn-primary btn-lg" %>
     </div>
     <div class='col-md-9'>
       <h2>投稿した訓練</h2>
@@ -17,10 +17,10 @@
         <thead>
           <tr>
             <th>訓練名</th>
-            <th>いいね数</th>
-            <th>コメント数</th>
+            <th>いいね</th>
+            <th>コメント</th>
             <th>投稿日時</th>
-            <th colspan="2"></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -30,12 +30,12 @@
                 <%= rehabilitation.training_name %>
                 <% end %>
               </td>
-              <td></td>
-              <td><%= rehabilitation.rehabilitation_comments.count %></td>
-              <td>投稿日時：<%= rehabilitation.created_at.to_s(:datetime) %></td>
+              <td><%= rehabilitation.favorites.count %></td>
+              <td><%= rehabilitation.rehabilitation_comments.count %>件</td>
+              <td><%= rehabilitation.created_at.to_s(:datetime) %></td>
               <td><% if rehabilitation.user == current_user %>
-                <%= link_to "編集", edit_rehabilitation_path(rehabilitation.id) %></td>
-              <td><%= link_to "削除", rehabilitation_path(rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                <%= link_to "編集", edit_rehabilitation_path(rehabilitation.id), class: "btn btn-warning" %>
+                <%= link_to "削除", rehabilitation_path(rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
                 <% end %>
               </td>
             </tr>

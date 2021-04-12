@@ -1,17 +1,24 @@
-<h1>新規訓練投稿</h1>
-<%= form_with model: @rehabilitation, local:true do |f| %>
-  <h4>訓練名</h4>
-  <%= f.text_field :training_name %>
-  <h4>言語病理学的所見</h4>
-  <%= f.text_area :speech_pathological_findings %>
-  <h4>適応・注意事項</h4>
-  <%= f.text_area :adaptation_precautions %>
-  <h4>準備物</h4>
-  <%= f.text_area :items %>
-  <h4>訓練内容（手順・内容）</h4>
-  <%= f.text_area :training_content %>
-  <h4>参考画像</h4>
-  <%= f.attachment_field :training_image, multiple: true %></br>
-  </br>
-  <%= f.submit '投稿する' %>
-<% end %>
+<div class="container">
+  <div class='row'>
+    <div class='col-md-12'>
+      <h2>訓練投稿</h2>
+      <%= form_with model: @rehabilitation, local:true do |f| %>
+        <h5>訓練名</h5>
+        <%= f.text_field :training_name %>
+        <h5>言語病理学的所見</h5>
+        <%= f.text_area :speech_pathological_findings, rows:'2', cols:"30" %>
+        <h5>適応・注意事項</h5>
+        <%= f.text_area :adaptation_precautions, rows:'3', cols:"40" %>
+        <h5>準備物</h5>
+        <%= f.text_area :items, rows:'3', cols:"30" %>
+        <h5>訓練内容（手順・内容）</h5>
+        <%= f.text_area :training_content, rows:'9', cols:"90" %>
+        <h5>参考画像</h5>
+        <%= f.attachment_field :training_image %>
+        <div class="text-center">
+          <%= f.submit '投稿する', class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

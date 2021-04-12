@@ -7,22 +7,27 @@
           <tr>
             <th>投稿者</th>
             <th>訓練名</th>
-            <th>いいね数</th>
-            <th>コメント数</th>
+            <th>いいね</th>
+            <th>コメント</th>
             <th>投稿日時</th>
           </tr>
         </thead>
         <tbody>
           <% @rehabilitations.each do |rehabilitation| %>
             <tr>
-              <td><%= attachment_image_tag rehabilitation.user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg" %>
-                <%= rehabilitation.user.name %></td>
-              <td><%= link_to rehabilitation_path(rehabilitation.id) do %>
+              <td>
+                <%= attachment_image_tag rehabilitation.user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg" %>
+                <%= rehabilitation.user.name %></br>
+                <%= rehabilitation.user.affiliation %></br>
+                <%= rehabilitation.user.introduction %>
+              </td>
+              <td>
+                <%= link_to rehabilitation_path(rehabilitation.id) do %>
                 <%= rehabilitation.training_name %>
                 <% end %>
               </td>
-              <td></td>
-              <td><%= rehabilitation.rehabilitation_comments.count %></td>
+              <td><%= rehabilitation.favorites.count %></td>
+              <td><%= rehabilitation.rehabilitation_comments.count %>件</td>
               <td><%= rehabilitation.created_at.to_s(:datetime) %></td>
             </tr>
           <% end %>
