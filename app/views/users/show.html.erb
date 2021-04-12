@@ -31,7 +31,7 @@
                 <% end %>
               </td>
               <td></td>
-              <td></td>
+              <td><%= rehabilitation.rehabilitation_comments.count %></td>
               <td>投稿日時：<%= rehabilitation.created_at.to_s(:datetime) %></td>
               <td><% if rehabilitation.user == current_user %>
                 <%= link_to "編集", edit_rehabilitation_path(rehabilitation.id) %></td>

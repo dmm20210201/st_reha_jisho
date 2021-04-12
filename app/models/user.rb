@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :rehabilitations, dependent: :destroy
   attachment :profile_image
+  has_many :rehabilitation_comments, dependent: :destroy
 end

@@ -6,9 +6,30 @@
   <p>訓練内容：<%= @rehabilitation.training_content %></p>
   <p><%= attachment_image_tag @rehabilitation, :training_image %></p>
   <p>投稿日時：<%= @rehabilitation.created_at.to_s(:datetime) %></p>
-  </br>
   <% if @rehabilitation.user == current_user %>
     <%= link_to "編集", edit_rehabilitation_path(@rehabilitation.id) %>
     <%= link_to "削除", rehabilitation_path(@rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>
+  </br>
+
+  <div class="comments">
+    <p>コメント：<%= @rehabilitation.rehabilitation_comments.count %>件</p>
+    <% @rehabilitation.rehabilitation_comments.each do |rehabilitation_comment| %>
+      <%= attachment_image_tag @rehabilitation.user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg" %>
+      <%= rehabilitation_comment.user.name %>
+      <%= rehabilitation_comment.created_at.to_s(:datetime) %><%= rehabilitation_comment.comment %>
+      <% if rehabilitation_comment.user == current_user %>
+        <div class="comment-delete">
+          <%= link_to "削除", rehabilitation_rehabilitation_comment_path(rehabilitation_comment.rehabilitation, rehabilitation_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+
+    <div class="new-comment">
+    <%= form_with(model:[@rehabilitation, @rehabilitation_comment], local: true) do |f| %>
+      <%= f.text_area :comment, rows:'5',placeholder: "コメント（意見等）" %></br>
+      <%= f.submit "コメントする" %>
+    <% end %>
+    </div>
 </div>

@@ -1,2 +1,0 @@
-class RehabilitaionComment < ApplicationRecord
-end

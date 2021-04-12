@@ -16,6 +16,7 @@ class RehabilitationsController < ApplicationController
 
   def show
     @rehabilitation = Rehabilitation.find(params[:id])
+    @rehabilitation_comment = RehabilitationComment.new
   end
 
   def edit
