@@ -1,6 +1,6 @@
 <div class="container">
   <div class='row'>
-    <div class='col-md-12'>
+    <div class='col-md-8'>
       <div class="rehabilitation-body">
         <h2><%= @rehabilitation.training_name %></h2>
         <p><strong>言語病理学的所見：</strong><%= @rehabilitation.speech_pathological_findings %></p>
@@ -13,43 +13,47 @@
           <%= link_to "訓練編集", edit_rehabilitation_path(@rehabilitation.id), class: "btn btn-warning" %>
           <%= link_to "訓練削除", rehabilitation_path(@rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
         <% end %>
-        </br>
-        </br>
+      </div>
+    </div>
+
+    <div class='col-md-4'>
+      <div class='favorites'>
         <% if @rehabilitation.favorited_by?(current_user) %>
-          <p>いいね:
+          <h5>いいね:
             <%= link_to rehabilitation_favorites_path(@rehabilitation.id), method: :delete do %>
               ♥<%= @rehabilitation.favorites.count %>
             <% end %>
-          </p>
+          </h5>
           <% else %>
-          <p>いいね:
+          <h5>いいね:
             <%= link_to rehabilitation_favorites_path(@rehabilitation.id), method: :post do %>
               ♡<%= @rehabilitation.favorites.count %>
             <% end %>
-          </p>
+          </h5>
         <% end %>
+      </div>
 
-        <div class="comments">
-          <p>コメント:<%= @rehabilitation.rehabilitation_comments.count %>件</p>
-          <% @rehabilitation.rehabilitation_comments.each do |rehabilitation_comment| %>
-            <%= attachment_image_tag @rehabilitation.user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg" %>
-            <%= rehabilitation_comment.user.name %>
-            <%= rehabilitation_comment.created_at.to_s(:datetime) %><%= rehabilitation_comment.comment %>
-            <% if rehabilitation_comment.user == current_user %>
-              <div class="comment-delete">
-                <%= link_to "コメントを削除", rehabilitation_rehabilitation_comment_path(rehabilitation_comment.rehabilitation, rehabilitation_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-              </div>
-            <% end %>
+      <div class="comments">
+        <h6>コメント:<%= @rehabilitation.rehabilitation_comments.count %>件</h6>
+        <% @rehabilitation.rehabilitation_comments.each do |rehabilitation_comment| %>
+          <%= attachment_image_tag @rehabilitation.user, :profile_image, :fill, 5, 5, fallback: "no_image.jpg" %>
+          <%= rehabilitation_comment.user.name %>
+          <p><%= rehabilitation_comment.comment %></p>
+          <%= rehabilitation_comment.created_at.to_s(:datetime) %>
+          <% if rehabilitation_comment.user == current_user %>
+            <div class="comment-delete">
+              <%= link_to "コメントを削除", rehabilitation_rehabilitation_comment_path(rehabilitation_comment.rehabilitation, rehabilitation_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            </div>
           <% end %>
-        </div>
-
-        <div class="new-comment">
-          <%= form_with(model:[@rehabilitation, @rehabilitation_comment], local: true) do |f| %>
-            <%= f.text_area :comment, rows:'5', cols:"50", placeholder: "意見・質問等" %></br>
-            <%= f.submit "コメントする" %>
-          <% end %>
-        </div>
+        <% end %>
+      </div>
+      <div class="new-comment">
+        <%= form_with(model:[@rehabilitation, @rehabilitation_comment], local: true) do |f| %>
+          <%= f.text_area :comment, rows:'5', cols:"40", placeholder: "意見・質問等" %></br>
+          <%= f.submit "コメントする" %>
+        <% end %>
       </div>
     </div>
+
   </div>
 </div>

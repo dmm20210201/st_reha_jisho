@@ -19,6 +19,11 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
+                <%= search_form_for @search do |f| %>
+                  <%= f.label'訓練検索' %>
+                  <%= f.search_field :training_name_or_speech_pathological_findings_or_adaptation_precautions_cont, required:"true", placeholder:'訓練、所見、適応' %>
+                  <%= f.submit "検索" %>
+                <% end %>
                 <li class="nav-item">
                   <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
                 </li>
