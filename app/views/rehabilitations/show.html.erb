@@ -17,20 +17,8 @@
     </div>
 
     <div class='col-md-4'>
-      <div class='favorites'>
-        <% if @rehabilitation.favorited_by?(current_user) %>
-          <h5>いいね:
-            <%= link_to rehabilitation_favorites_path(@rehabilitation.id), method: :delete do %>
-              ♥<%= @rehabilitation.favorites.count %>
-            <% end %>
-          </h5>
-          <% else %>
-          <h5>いいね:
-            <%= link_to rehabilitation_favorites_path(@rehabilitation.id), method: :post do %>
-              ♡<%= @rehabilitation.favorites.count %>
-            <% end %>
-          </h5>
-        <% end %>
+      <div class="favorite-btn">
+        <%= render 'favorites/favorite-btn', rehabilitation: @rehabilitation %>
       </div>
 
       <div class="comments">

@@ -1,15 +1,13 @@
 class FavoritesController < ApplicationController
   def create
-    rehabilitation = Rehabilitation.find(params[:rehabilitation_id])
-    favorite = current_user.favorites.new(rehabilitation_id: rehabilitation.id)
+    @rehabilitation = Rehabilitation.find(params[:rehabilitation_id])
+    favorite = current_user.favorites.new(rehabilitation_id: @rehabilitation.id)
     favorite.save
-    redirect_to rehabilitation_path(rehabilitation.id)
   end
 
   def destroy
-    rehabilitation = Rehabilitation.find(params[:rehabilitation_id])
-    favorite = current_user.favorites.find_by(rehabilitation_id: rehabilitation.id)
+    @rehabilitation = Rehabilitation.find(params[:rehabilitation_id])
+    favorite = current_user.favorites.find_by(rehabilitation_id: @rehabilitation.id)
     favorite.destroy
-    redirect_to rehabilitation_path(rehabilitation.id)
   end
 end

@@ -35,7 +35,7 @@
               <td><%= rehabilitation.created_at.to_s(:datetime) %></td>
               <td><% if rehabilitation.user == current_user %>
                 <%= link_to "編集", edit_rehabilitation_path(rehabilitation.id), class: "btn btn-warning" %>
-                <%= link_to "削除", rehabilitation_path(rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+                <%= link_to "削除", rehabilitation_path(rehabilitation.id,page: "mypage"), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
                 <% end %>
               </td>
             </tr>
