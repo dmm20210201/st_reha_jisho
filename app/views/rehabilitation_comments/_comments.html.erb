@@ -6,7 +6,7 @@
   <%= rehabilitation_comment.created_at.to_s(:datetime) %>
   <% if rehabilitation_comment.user == current_user %>
     <div class="comment-delete">
-      <%= link_to "コメントを削除", rehabilitation_rehabilitation_comment_path(rehabilitation_comment.rehabilitation, rehabilitation_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <%= link_to "コメントを削除", rehabilitation_rehabilitation_comment_path(rehabilitation_comment.rehabilitation, rehabilitation_comment), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
     </div>
   <% end %>
 <% end %>

@@ -7,11 +7,9 @@ class RehabilitationCommentsController < ApplicationController
   end
 
   def destroy
-    # RehabilitationComment.find_by(id: params[:id], rehabilitation_id: params[:rehabilitation_id]).destroy
     @rehabilitation = Rehabilitation.find(params[:rehabilitation_id])
-    comment = current_user.rehabilitation_comments.find_by(rehabilitation_comment_params)
+    comment = current_user.rehabilitation_comments.find(params[:id])
     comment.destroy
-    # redirect_to rehabilitation_path(params[:rehabilitation_id])
   end
 
   private
