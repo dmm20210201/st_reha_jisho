@@ -1,8 +1,8 @@
 <div class="container">
+  <h2><%= @rehabilitation.training_name %></h2>
   <div class='row'>
     <div class='col-md-8'>
       <div class="rehabilitation-body">
-        <h2><%= @rehabilitation.training_name %></h2>
         <p><strong>言語病理学的所見：</strong><%= @rehabilitation.speech_pathological_findings %></p>
         <p><strong>適応・注意事項：</strong><%= @rehabilitation.adaptation_precautions %></p>
         <p><strong>準備物：</strong><%= @rehabilitation.items %></p>
@@ -15,8 +15,7 @@
         <% end %>
       </div>
     </div>
-
-    <div class='col-md-4'>
+    <div class='col-md-3 offset-md-1'>
       <div class="favorite-btn">
         <%= render 'favorites/favorite-btn', rehabilitation: @rehabilitation %>
       </div>

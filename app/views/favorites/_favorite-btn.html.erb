@@ -1,11 +1,11 @@
 <% if rehabilitation.favorited_by?(current_user) %>
-  <h5>いいね:
+  <h5>いいね→
     <%= link_to rehabilitation_favorites_path(rehabilitation.id), method: :delete, remote: true do %>
       ♥<%= rehabilitation.favorites.count %>
     <% end %>
   </h5>
   <% else %>
-  <h5>いいね:
+  <h5>いいね→
     <%= link_to rehabilitation_favorites_path(rehabilitation.id), method: :post, remote: true do %>
       ♡<%= rehabilitation.favorites.count %>
     <% end %>

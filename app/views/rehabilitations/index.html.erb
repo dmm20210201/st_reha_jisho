@@ -1,7 +1,7 @@
 <div class="container">
+  <h2>訓練一覧</h2>
   <div class='row'>
-    <div class='col-md-12'>
-      <h2>訓練一覧</h2>
+    <div class='col-md-8'>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -23,7 +23,7 @@
               </td>
               <td>
                 <%= link_to rehabilitation_path(rehabilitation.id) do %>
-                <%= rehabilitation.training_name %>
+                  <%= rehabilitation.training_name %>
                 <% end %>
               </td>
               <td><%= rehabilitation.favorites.count %></td>
@@ -31,9 +31,94 @@
               <td><%= rehabilitation.created_at.to_s(:datetime) %></td>
             </tr>
           <% end %>
-          <%= paginate @rehabilitations %>
+        </tbody>
+      </table>
+    </div>
+    <div class='col-md-3 offset-md-1'>
+      <h5>＜いいね数ランキング＞</h5>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>順位</th>
+            <th>訓練名</th>
+            <th>いいね</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% last_favorite = 0 %>
+          <% j_favorite = 1 %>
+          <% @favorite_ranks.each.with_index(1) do |ranking, i| %>
+            <tr>
+              <% if i == 1 %>
+                <% last_favorite = ranking.favorites.count %>
+              <% end %>
+              <% if ranking.favorites.count != last_favorite %>
+                <% j_favorite = i %>
+                <td><%= j_favorite %>位</td>
+                <td>
+                  <%= link_to rehabilitation_path(ranking.id) do %>
+                    <%= ranking.training_name %>
+                  <% end %>
+                </td>
+                <td><%= ranking.favorites.count %></td>
+                <% last_favorite = ranking.favorites.count %>
+              <% else %>
+                <% last_favorite = ranking.favorites.count %>
+                <td><%= j_favorite %>位</td>
+                <td>
+                  <%= link_to rehabilitation_path(ranking.id) do %>
+                    <%= ranking.training_name %>
+                  <% end %>
+                </td>
+                <td><%= ranking.favorites.count %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </br>
+      <h5>＜コメント数ランキング＞</h5>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>順位</th>
+            <th>訓練名</th>
+            <th>コメント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% last_comment = 0 %>
+          <% j_comment= 1 %>
+          <% @comment_ranks.each.with_index(1) do |ranking, i| %>
+            <tr>
+              <% if i == 1 %>
+                <% last_comment = ranking.rehabilitation_comments.count %>
+              <% end %>
+              <% if ranking.rehabilitation_comments.count != last_comment %>
+                <% j_comment = i %>
+                <td><%= j_comment %>位</td>
+                <td>
+                  <%= link_to rehabilitation_path(ranking.id) do %>
+                    <%= ranking.training_name %>
+                  <% end %>
+                </td>
+                <td><%= ranking.rehabilitation_comments.count %>件</td>
+                <% last_comment = ranking.rehabilitation_comments.count %>
+              <% else %>
+                <% last_comment = ranking.rehabilitation_comments.count %>
+                <td><%= j_comment %>位</td>
+                <td>
+                  <%= link_to rehabilitation_path(ranking.id) do %>
+                    <%= ranking.training_name %>
+                  <% end %>
+                </td>
+                <td><%= ranking.rehabilitation_comments.count %>件</td>
+              <% end %>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
   </div>
+  <%= paginate @rehabilitations %>
 </div>

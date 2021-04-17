@@ -3,6 +3,8 @@ class RehabilitationsController < ApplicationController
     unless params[:q]
       @rehabilitations = Rehabilitation.all.page(params[:page]).reverse_order
     end
+    @favorite_ranks = Rehabilitation.find(Favorite.group(:rehabilitation_id).order('count(rehabilitation_id) desc').limit(5).pluck(:rehabilitation_id))
+    @comment_ranks = Rehabilitation.find(RehabilitationComment.group(:rehabilitation_id).order('count(rehabilitation_id) desc').limit(5).pluck(:rehabilitation_id))
   end
 
   def new
@@ -42,7 +44,6 @@ class RehabilitationsController < ApplicationController
   end
 
   private
-
   def rehabilitation_params
     params.require(:rehabilitation).permit(:training_name, :speech_pathological_findings, :adaptation_precautions, :items, :training_content, :training_image)
   end
