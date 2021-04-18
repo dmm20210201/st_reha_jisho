@@ -1,5 +1,11 @@
 <div class="container">
   <h2>ユーザー編集</h2>
+  <% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+  <% end %>
   <div class='row'>
     <div class='col-md-12'>
       <div class="edit_field">
@@ -13,7 +19,7 @@
           <label for="affiliation">所属</label>
           <%= f.text_field :affiliation, id:"affiliation", placeholder:"◯◯病院"%>
           <label for="introduction">紹介文</label>
-          <%= f.text_area :introduction,rows:'4', cols:"30", id:"introduction", placeholder:"経歴、STとしてのモットー、座右の銘など自由にご記入ください" %>
+          <%= f.text_area :introduction,rows:'4', cols:"30", id:"introduction", placeholder:"経歴、STとしてのモットー、座右の銘などを50文字以下でご記入ください" %>
           <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
           <label for="inputImage">ユーザー画像</label>
           <%= f.attachment_field :profile_image, placeholder: "ユーザー画像" %>

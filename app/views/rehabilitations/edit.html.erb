@@ -1,5 +1,11 @@
 <div class="container">
   <h2>訓練編集</h2>
+  <% if @rehabilitation.errors.any? %>
+  <%= @rehabilitation.errors.count %>件のエラーが発生しました
+  <% @rehabilitation.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+  <% end %>
   <div class='row'>
     <div class='col-md-12'>
       <%= form_with model:@rehabilitation,local:true do |f| %>
