@@ -6,6 +6,22 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      rehabilitation: リハビリテーション
+      user: ユーザー
+    attributes:
+      rehabilitation:
+        training_name: "訓練名"
+        speech_pathological_findings: "言語病理学的所見"
+        adaptation_precautions: "適応・注意事項"
+        items: "準備物"
+        training_content: "訓練内容"
+      user:
+        name: "氏名"
+        name_kana: "氏名（カナ）"
+        affiliation: "所属"
+        introduction: "紹介文"
+        email: "メールアドレス"
   date:
     abbr_day_names:
     - 日

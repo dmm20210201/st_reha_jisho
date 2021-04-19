@@ -1,11 +1,13 @@
 <div class="container">
   <h2>訓練編集</h2>
-  <% if @rehabilitation.errors.any? %>
-  <%= @rehabilitation.errors.count %>件のエラーが発生しました
-  <% @rehabilitation.errors.full_messages.each do |message| %>
-    <%= message %>
+  <div class="error-messages">
+    <% if @rehabilitation.errors.any? %>
+    <%= @rehabilitation.errors.count %>件のエラーが発生しました
+    <% @rehabilitation.errors.full_messages.each do |message| %></br>
+      ・<%= message %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   <div class='row'>
     <div class='col-md-12'>
       <%= form_with model:@rehabilitation,local:true do |f| %>
@@ -20,10 +22,10 @@
         <h5>訓練内容（手順・内容）</h5>
         <%= f.text_area :training_content, rows:'9', cols:"90" %>
         <h5>参考画像</h5>
-        <%= attachment_image_tag @rehabilitation, :training_image, :fill, 200, 200, fallback: "no_image.jpg" %>
+        <%= attachment_image_tag @rehabilitation, :training_image, fallback: "no_image.jpg" %>
         <%= f.attachment_field :training_image %>
         <div class="text-center">
-          <%= f.submit '変更する', class: "btn btn-success" %>
+          <%= f.submit "変更する", class: "btn btn-success" %>
         </div>
       <% end %>
     </div>

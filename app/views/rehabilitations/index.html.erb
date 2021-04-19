@@ -16,7 +16,7 @@
           <% @rehabilitations.each do |rehabilitation| %>
             <tr>
               <td>
-                <%= attachment_image_tag rehabilitation.user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg" %>
+                <%= attachment_image_tag rehabilitation.user, :profile_image, size: "70x70", fallback: "no_image.jpg" %>
                 <%= rehabilitation.user.name %></br>
                 <%= rehabilitation.user.affiliation %></br>
                 <%= rehabilitation.user.introduction %>
