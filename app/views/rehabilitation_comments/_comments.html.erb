@@ -1,6 +1,5 @@
-<h6>コメント:<%= rehabilitation.rehabilitation_comments.count %>件</h6>
 <% rehabilitation.rehabilitation_comments.each do |rehabilitation_comment| %>
-  <%= attachment_image_tag rehabilitation.user, :profile_image, :fill, 5, 5, fallback: "no_image.jpg" %>
+  <%= attachment_image_tag rehabilitation.user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
   <%= rehabilitation_comment.user.name %>
   <p><%= rehabilitation_comment.comment %></p>
   <%= rehabilitation_comment.created_at.to_s(:datetime) %>

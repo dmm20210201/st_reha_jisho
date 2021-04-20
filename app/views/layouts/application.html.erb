@@ -4,6 +4,7 @@
     <title>STリハ辞書</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,7 +13,12 @@
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="container">
+          <% if user_signed_in? %>
+            <h6><%= link_to "STリハ辞書", rehabilitations_path, class: 'nav-link text-dark' %></h6>
+          <% else %>
+            <h6><%= link_to "STリハ辞書", root_path, class: 'nav-link text-dark' %></h6>
+          <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -59,5 +65,9 @@
       <p id="notice" style="text-align:center;"><%= notice %></p>
       <%= yield %>
     </main>
+    <footer class="bg-light text-dark pt-4 pb-2">
+      <p class="text-center">Copyright 2021 Naoki Teramoto</p>
+    </footer>
   </body>
+
 </html>

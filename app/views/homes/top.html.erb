@@ -1,13 +1,19 @@
-<div class="text-center">
+<div class="container text-center">
   <h1>STリハ辞書</h1>
   <div class='row'>
     <div class='col-md-12'>
-        <p>
-          ようこそ、STリハ辞書へ！</br>
-          このサイトは、言語聴覚士のための訓練内容共有サイトになります。</br>
-          投稿内容の信頼性保持のためにも、</br>
-          投稿、閲覧ともにユーザー登録が必要となります。
-        </p>
+      <p>
+        ようこそ、STリハ辞書へ！</br>
+        このサイトは、言語聴覚士のための訓練内容共有サイトになります。</br>
+        投稿内容の信頼性保持のためにも、</br>
+        投稿、閲覧ともにユーザー登録が必要となります。
+      </p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %></br></br>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

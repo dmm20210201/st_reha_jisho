@@ -1,14 +1,14 @@
 <div class="container">
-  <h2>訓練一覧</h2>
   <div class='row'>
     <div class='col-md-8'>
+      <h2>訓練一覧</h2>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
-            <th>投稿者</th>
             <th>訓練名</th>
             <th>いいね</th>
             <th>コメント</th>
+            <th>投稿者</th>
             <th>投稿日時</th>
           </tr>
         </thead>
@@ -16,18 +16,18 @@
           <% @rehabilitations.each do |rehabilitation| %>
             <tr>
               <td>
-                <%= attachment_image_tag rehabilitation.user, :profile_image, size: "70x70", fallback: "no_image.jpg" %>
-                <%= rehabilitation.user.name %></br>
-                <%= rehabilitation.user.affiliation %></br>
-                <%= rehabilitation.user.introduction %>
-              </td>
-              <td>
                 <%= link_to rehabilitation_path(rehabilitation.id) do %>
                   <%= rehabilitation.training_name %>
                 <% end %>
               </td>
               <td><%= rehabilitation.favorites.count %></td>
               <td><%= rehabilitation.rehabilitation_comments.count %>件</td>
+              <td>
+                <%= attachment_image_tag rehabilitation.user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
+                <%= rehabilitation.user.name %></br>
+                <%= rehabilitation.user.affiliation %></br>
+                <%= rehabilitation.user.introduction %>
+              </td>
               <td><%= rehabilitation.created_at.to_s(:datetime) %></td>
             </tr>
           <% end %>
@@ -35,7 +35,8 @@
       </table>
     </div>
     <div class='col-md-3 offset-md-1'>
-      <h5>＜いいね数ランキング＞</h5>
+      <h3>ランキング</h3>
+      <h5>＜いいね数＞</h5>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -77,7 +78,7 @@
         </tbody>
       </table>
       </br>
-      <h5>＜コメント数ランキング＞</h5>
+      <h5>＜コメント数＞</h5>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
