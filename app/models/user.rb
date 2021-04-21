@@ -3,7 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  def self.guest
+    find_or_create_by!(name: 'guest', name_kana: 'ゲスト', affiliation: 'A病院', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
   has_many :rehabilitations, dependent: :destroy
   attachment :profile_image
   has_many :rehabilitation_comments, dependent: :destroy

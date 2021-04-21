@@ -2,32 +2,44 @@
   <h2>ユーザー編集</h2>
   <div class="error-messages">
     <% if @user.errors.any? %>
-      <%= @user.errors.count %>件のエラーが発生しました
-      <% @user.errors.full_messages.each do |message| %></br>
+      <h5><%= @user.errors.count %>件のエラーが発生しました</h5>
+      <% @user.errors.full_messages.each do |message| %><br>
         ・<%= message %>
         <% end %>
     <% end %>
   </div>
   <div class='row'>
     <div class='col-md-12'>
-      <div class="edit_field">
-        <%= form_with model:@user, local:true do |f| %>
-          <label for="inputName">氏名</label>
-          <%= f.text_field :name, id:"inputName", placeholder:"言語 太郎" %>
-          <label for="inputName_kana">氏名（カナ）</label>
-          <%= f.text_field :name_kana, id:"inputName_kana", placeholder:"ゲンゴ タロウ" %>
-          <label for="email">メールアドレス</label>
-          <%= f.email_field :email, id:"email" %>
-          <label for="affiliation">所属</label>
-          <%= f.text_field :affiliation, id:"affiliation", placeholder:"◯◯病院"%>
-          <label for="introduction">紹介文</label>
-          <%= f.text_area :introduction,rows:'4', cols:"30", id:"introduction", placeholder:"経歴、STとしてのモットー、座右の銘などを50文字以下でご記入ください" %>
+      <%= form_with model:@user, local:true do |f| %>
+        <p class="field">
+          <%= f.label :氏名 %><br>
+          <%= f.text_field :name, placeholder:"言語 太郎" %>
+        </p>
+        <p class="field">
+          <%= f.label :氏名（カナ） %><br>
+          <%= f.text_field :name_kana, placeholder:"ゲンゴ タロウ" %>
+        </p>
+        <p class="field">
+          <%= f.label :メールアドレス %><br>
+          <%= f.email_field :email, placeholder:"..@.." %>
+        </p>
+        <p class="field">
+          <%= f.label :所属 %><br>
+          <%= f.text_field :affiliation, placeholder:"◯◯病院"%>
+        </p>
+        <p class="field">
+          <%= f.label :紹介文 %><br>
+          <%= f.text_area :introduction,rows:'4', cols:"30", placeholder:"経歴、STとしてのモットー、座右の銘などを50文字以下でご記入ください" %>
+        </p>
+        <p class="field">
+          <%= f.label :ユーザー画像 %><br>
           <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg"%>
-          <label for="inputImage">ユーザー画像</label>
           <%= f.attachment_field :profile_image, placeholder: "ユーザー画像" %>
+        </p>
+        <p class="text-center">
           <%= f.submit "変更する", class: "btn btn-success" %>
-        <% end %>
-      </div>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>

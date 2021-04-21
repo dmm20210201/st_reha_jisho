@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   before_action :ensure_correct_user
+  before_action :ensure_normal_user, only: %i[update]
+
 
   def show
     @user = User.find(params[:id])
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id), notice: "ユーザー情報が更新されました。"
+      redirect_to user_path(@user.id), notice: "ユーザー情報が更新されました"
     else
       render "edit"
     end
@@ -31,4 +33,11 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+
+  def ensure_normal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
+    end
+  end
+
 end

@@ -4,7 +4,7 @@
     <title>STリハ辞書</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="言語聴覚士のための訓練内容投稿サイト">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -62,11 +62,11 @@
       </navi>
     </header>
     <main class="mb-auto">
-      <p id="notice" style="text-align:center;"><%= notice %></p>
+      <p class="notice" style="text-align:center;"><%= notice %></p>
       <%= yield %>
     </main>
     <footer class="bg-light text-dark pt-4 pb-2">
-      <p class="text-center">Copyright 2021 Naoki Teramoto</p>
+      <p class="text-center">©2021 STリハ辞書</p>
     </footer>
   </body>
 

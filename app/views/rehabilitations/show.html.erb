@@ -6,16 +6,30 @@
         <div class="favorite-btn text-right">
           <%= render 'favorites/favorite-btn', rehabilitation: @rehabilitation %>
         </div>
-        <p><strong>言語病理学的所見：</strong><%= @rehabilitation.speech_pathological_findings %></p>
-        <p><strong>適応・注意事項：</strong><%= @rehabilitation.adaptation_precautions %></p>
-        <p><strong>準備物：</strong><%= @rehabilitation.items %></p>
-        <p><strong>訓練内容：</strong></br><%= @rehabilitation.training_content %></p>
+        <p>
+          <strong>言語病理学的所見</strong><br>
+          &emsp;<%= @rehabilitation.speech_pathological_findings %>
+        </p>
+        <p>
+          <strong>適応・注意事項</strong><br>
+          &emsp;<%= @rehabilitation.adaptation_precautions %>
+        </p>
+        <p>
+          <strong>準備物</strong><br>
+          &emsp;<%= @rehabilitation.items %>
+        </p>
+        <p>
+          <strong>訓練内容</strong><br>
+          &emsp;<%= @rehabilitation.training_content %>
+        </p>
         <p><%= attachment_image_tag @rehabilitation, :training_image %></p>
         <p>投稿日時：<%= @rehabilitation.created_at.to_s(:datetime) %></p>
-        <% if @rehabilitation.user == current_user %>
-          <%= link_to "訓練編集", edit_rehabilitation_path(@rehabilitation.id), class: "btn btn-warning" %>
-          <%= link_to "訓練削除", rehabilitation_path(@rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-        <% end %>
+        <p class="text-right">
+          <% if @rehabilitation.user == current_user %>
+            <%= link_to "訓練編集", edit_rehabilitation_path(@rehabilitation.id), class: "btn btn-warning" %>&emsp;
+            <%= link_to "訓練削除", rehabilitation_path(@rehabilitation.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+          <% end %>
+        </p>
       </div>
     </div>
     <div class='col-md-3 offset-md-1'>
@@ -27,6 +41,5 @@
         <%= render 'rehabilitation_comments/new_comment', rehabilitation: @rehabilitation, rehabilitation_comment: @rehabilitation_comment %>
       </div>
     </div>
-
   </div>
 </div>

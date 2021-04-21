@@ -18,7 +18,7 @@ class RehabilitationsController < ApplicationController
     @rehabilitation = Rehabilitation.new(rehabilitation_params)
     @rehabilitation.user_id = current_user.id
     if @rehabilitation.save
-      redirect_to rehabilitations_path, notice: "新しい訓練が投稿されました。"
+      redirect_to rehabilitations_path, notice: "新しい訓練が投稿されました"
     else
       render "new"
     end
@@ -36,7 +36,7 @@ class RehabilitationsController < ApplicationController
   def update
     @rehabilitation = Rehabilitation.find(params[:id])
     if @rehabilitation.update(rehabilitation_params)
-      redirect_to rehabilitation_path(@rehabilitation.id), notice: "訓練が更新されました。"
+      redirect_to rehabilitation_path(@rehabilitation.id), notice: "訓練が更新されました"
     else
       render "edit"
     end
@@ -46,9 +46,9 @@ class RehabilitationsController < ApplicationController
     rehabilitation = Rehabilitation.find(params[:id])
     rehabilitation.destroy
     if params[:page] == "mypage"
-      redirect_to request.referer
+      redirect_to request.referer, notice: "訓練が削除されました"
     else
-      redirect_to rehabilitations_path
+      redirect_to rehabilitations_path, notice: "訓練が削除されました"
     end
   end
 

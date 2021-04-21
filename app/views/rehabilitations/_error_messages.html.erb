@@ -1,0 +1,8 @@
+<div class="error-messages">
+  <% if rehabilitation.errors.any? %>
+  <h5><%= rehabilitation.errors.count %>件のエラーが発生しました</h5>
+  <% rehabilitation.errors.full_messages.each do |message| %><br>
+    ・<%= message %>
+    <% end %>
+  <% end %>
+</div>
