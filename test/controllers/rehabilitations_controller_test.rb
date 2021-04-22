@@ -35,5 +35,4 @@ class RehabilitationsControllerTest < ActionDispatch::IntegrationTest
     get rehabilitations_destroy_url
     assert_response :success
   end
-
 end

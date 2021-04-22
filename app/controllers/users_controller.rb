@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-
   before_action :ensure_correct_user
-  before_action :ensure_normal_user, only: %i[update]
-
+  before_action :ensure_normal_user, only: %i(update destroy)
 
   def show
     @user = User.find(params[:id])
@@ -22,9 +20,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to root_path, notice: "ユーザーが削除されました"
+  end
+
   private
+
   def user_params
-    params.require(:user).permit(:name, :name_kana, :affiliation, :introduction, :profile_image, :email )
+    params.require(:user).permit(:name, :name_kana, :affiliation, :introduction, :profile_image, :email)
   end
 
   def ensure_correct_user
@@ -36,8 +41,8 @@ class UsersController < ApplicationController
 
   def ensure_normal_user
     if current_user.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
+      flash[:notice] = 'ゲストユーザーの更新・削除はできません'
+      redirect_back(fallback_location: root_path)
     end
   end
-
 end

@@ -13,6 +13,7 @@ class RehabilitationCommentsController < ApplicationController
   end
 
   private
+
   def rehabilitation_comment_params
     params.require(:rehabilitation_comment).permit(:comment)
   end

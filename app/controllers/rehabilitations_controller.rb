@@ -1,5 +1,4 @@
 class RehabilitationsController < ApplicationController
-
   before_action :correct_user, only: [:edit, :update]
 
   def index
@@ -53,6 +52,7 @@ class RehabilitationsController < ApplicationController
   end
 
   private
+
   def rehabilitation_params
     params.require(:rehabilitation).permit(:training_name, :speech_pathological_findings, :adaptation_precautions, :items, :training_content, :training_image)
   end
@@ -64,5 +64,4 @@ class RehabilitationsController < ApplicationController
       redirect_to rehabilitation_path(rehabilitation.id)
     end
   end
-
 end
