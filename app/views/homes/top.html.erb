@@ -1,7 +1,7 @@
-<div class="container text-center">
-  <h1>STリハ辞書</h1>
+<div class='container'>
+  <h1><strong><font color='#52734d'>STリハ辞書</font></strong></h1>
   <div class='row'>
-    <div class='col-md-12'>
+    <div class='col-md-9'>
       <p>
         ようこそ、STリハ辞書へ！<br>
         このサイトは、言語聴覚士のための訓練内容共有サイトになります。<br>
@@ -9,11 +9,9 @@
         投稿、閲覧ともにユーザー登録が必要となります。
       </p>
     </div>
-  </div>
-  <div class='row'>
-    <div class="d-grid gap-2 col-6 mx-auto">
+    <div class='col-md-3 text-right'>
       <p>
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %>&emsp;
         <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
       </p>
       <p><%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-primary" %></p>

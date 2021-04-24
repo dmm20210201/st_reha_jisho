@@ -10,8 +10,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm" style="background-color:#E6FFE9;">
+  <body class="d-flex flex-column vh-100" style="background-color:#feffde;">
+    <header class="shadow-sm" style="background-color:#ddffbc;">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <% if user_signed_in? %>
@@ -19,17 +19,16 @@
           <% else %>
             <h6><%= link_to "STリハ辞書", root_path, class: 'navbar-brand' %></h6>
           <% end %>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <% if user_signed_in? %>
-              <%= search_form_for @search do |f| %>
-                <%= f.label'検索' %>
-                <%= f.search_field :training_name_or_speech_pathological_findings_or_adaptation_precautions_cont, required:"true", placeholder:'訓練、所見、適応' %>
-                <%= f.submit "検索" %>
+            <div class="search_field">
+              <% if user_signed_in? %>
+                <%= search_form_for @search do |f| %>
+                  <%= f.label'訓練検索' %>
+                  <%= f.search_field :training_name_or_speech_pathological_findings_or_adaptation_precautions_cont, required:"true", placeholder:'訓練、所見、適応' %>
+                  <%= f.submit "検索" %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li class="nav-item">
@@ -67,7 +66,7 @@
       <p class="notice" style="text-align:center;"><%= notice %></p>
       <%= yield %>
     </main>
-    <footer class="text-dark pt-4 pb-2" style="background-color:#E6FFE9;">
+    <footer class="text-dark pt-4 pb-2" style="background-color:#ddffbc;">
       <p class="text-center">©2021 STリハ辞書</p>
     </footer>
   </body>

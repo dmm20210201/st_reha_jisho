@@ -1,11 +1,11 @@
 <div class="container">
   <div class='row'>
     <div class='col-md-3'>
-      <h2>マイページ</h2>
-      <h4><%= @user.name %></h4>
+      <h2><strong>マイページ</strong></h2>
+      <h4><strong><%= @user.name %></strong></h4>
       <%= attachment_image_tag @user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
-      <h6><%= @user.affiliation %></h6>
-      <h6><%= @user.introduction %></h6>
+      <h6><strong>所属</strong><br>&emsp;<%= @user.affiliation %></h6>
+      <h6><strong>紹介</strong><br>&emsp;<%= @user.introduction %></h6>
       <% if @user.id == current_user.id %>
         <p><%= link_to "ユーザー情報編集", edit_user_path(@user.id) %></p>
         <p><%= link_to "退会する",user_path(@user.id),method: :delete, "data-confirm" => "本当に退会しますか？" %></p>
@@ -20,7 +20,7 @@
         <thead>
           <tr>
             <th>訓練名</th>
-            <th>いいね</th>
+            <th>♥</th>
             <th>コメント</th>
             <th>投稿日時</th>
             <th></th>

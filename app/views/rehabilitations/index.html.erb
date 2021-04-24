@@ -1,12 +1,12 @@
 <div class="container">
   <div class='row'>
     <div class='col-md-8'>
-      <h2>訓練一覧</h2>
+      <h2><strong>訓練一覧</strong></h2>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
-            <th>訓練名</th>
-            <th>いいね</th>
+            <th>訓練名/対象</th>
+            <th>♥</th>
             <th>コメント</th>
             <th>投稿者</th>
             <th>投稿日時</th>
@@ -18,7 +18,8 @@
               <td>
                 <%= link_to rehabilitation_path(rehabilitation.id) do %>
                   <%= rehabilitation.training_name %>
-                <% end %>
+                <% end %><br><br>
+                <%= rehabilitation.speech_pathological_findings %>
               </td>
               <td><%= rehabilitation.favorites.count %></td>
               <td><%= rehabilitation.rehabilitation_comments.count %>件</td>
@@ -43,7 +44,7 @@
           <tr>
             <th>順位</th>
             <th>訓練名</th>
-            <th>いいね</th>
+            <th>♥</th>
           </tr>
         </thead>
         <tbody>

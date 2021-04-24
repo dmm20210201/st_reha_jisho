@@ -45,7 +45,14 @@
         </p>
       <% end %>
 
-      <%= render "devise/shared/links" %>
+      <p><%= render "devise/shared/links" %></p>
+
+      <p>
+        こちらから
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+        ができます
+      </p>
+
     </div>
   </div>
 </div>
