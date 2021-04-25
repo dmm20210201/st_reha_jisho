@@ -19,3 +19,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+/* global $*/
+$(function() {
+  var i = 1;
+  setInterval(function() {
+    if(i > 4) i = 1;
+    $("#wrapper").css("background","url('./images/img"+i+".jpg') no-repeat center");
+    i++;
+    }, 3000
+  );
+});

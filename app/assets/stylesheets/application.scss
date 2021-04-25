@@ -32,3 +32,12 @@
 .notice {
   color: green;
 }
+
+@keyframes fadeIn {
+    0% {
+        CSSプロパティ:0;
+    }
+    100% {
+        CSSプロパティ:1;
+    }
+}
