@@ -35,7 +35,7 @@
     <div class='col-md-3 offset-md-1'>
       <h4>コメント:<%= @rehabilitation.rehabilitation_comments.count %>件</h4>
       <div class="comments">
-        <%= render 'rehabilitation_comments/comments', rehabilitation: @rehabilitation %>
+        <%= render 'rehabilitation_comments/comments', rehabilitation: @rehabilitation, new_rehabilitation_comment: @rehabilitation_comment %>
       </div>
       <div class="new-comment">
         <%= render 'rehabilitation_comments/new_comment', rehabilitation: @rehabilitation, rehabilitation_comment: @rehabilitation_comment %>

@@ -1,1 +1,1 @@
-$(".comments").html("<%= escape_javascript(render partial: 'rehabilitation_comments/comments', locals: {rehabilitation: @rehabilitation}) %>");
+$(".comments").html("<%= escape_javascript(render partial: 'rehabilitation_comments/comments', locals: {rehabilitation: @rehabilitation, new_rehabilitation_comment: @new_rehabilitation_comment}}) %>");

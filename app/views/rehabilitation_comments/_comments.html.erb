@@ -1,11 +1,17 @@
-<% rehabilitation.rehabilitation_comments.each do |rehabilitation_comment| %>
+<% rehabilitation_comments = rehabilitation.rehabilitation_comments.order(id: "DESC") %>
+<!--#parents＝親になるコメントのid-->
+<% parents = [] %>
+<% rehabilitation_comments.each do |rehabilitation_comment| %>
   <p>
-    <%= attachment_image_tag rehabilitation.user, :profile_image, size: "60x60", fallback: "no_image.jpg" %>
-    <%= rehabilitation_comment.user.name %><br>
-    <%= rehabilitation_comment.comment %><br>
-    <%= rehabilitation_comment.created_at.to_s(:datetime) %><br>
-    <% if rehabilitation_comment.user == current_user %>
-        <%= link_to "コメントを削除", rehabilitation_rehabilitation_comment_path(rehabilitation_comment.rehabilitation, rehabilitation_comment), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
+    <%= render 'rehabilitation_comments/parent_comment', rehabilitation_comments: rehabilitation_comments, rehabilitation_comment: rehabilitation_comment, parents: parents %>
+    <!--#親として出力されていたら除外する-->
+    <% if parents.exclude?(rehabilitation_comment.id) %>
+      <%= render 'rehabilitation_comments/comment', rehabilitation_comment: rehabilitation_comment %>
+      <%= form_with(model:[rehabilitation, new_rehabilitation_comment]) do |f| %>
+        <%= f.text_area :comment, rows:'3', cols:"20", placeholder: "コメントへの返信" %><br>
+        <%= f.hidden_field :reply_comment, :value => rehabilitation_comment.id  %>
+        <%= f.submit "コメントする" %>
+      <% end %>
     <% end %>
   </p>
 <% end %>

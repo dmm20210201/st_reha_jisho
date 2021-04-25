@@ -1,0 +1,7 @@
+<% if rehabilitation_comment.reply_comment.present? %>
+  <% parent_comment = rehabilitation_comments.find(rehabilitation_comment.reply_comment) %>
+  <%= render 'rehabilitation_comments/parent_comment', rehabilitation_comments: rehabilitation_comments, rehabilitation_comment: parent_comment, parents: parents %>
+  <%= render 'rehabilitation_comments/comment', rehabilitation_comment: parent_comment %>
+  <br>
+  <% parents.push(rehabilitation_comment.reply_comment) %>
+<% end %>

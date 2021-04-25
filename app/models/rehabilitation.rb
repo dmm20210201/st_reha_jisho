@@ -2,6 +2,7 @@ class Rehabilitation < ApplicationRecord
   belongs_to :user
   attachment :training_image
   has_many :rehabilitation_comments, dependent: :destroy
+  has_many :replies, class_name: "RehabilitationComment", foreign_key: :reply_comment, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   validates :training_name, presence: true

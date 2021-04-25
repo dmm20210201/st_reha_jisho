@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_122636) do
+ActiveRecord::Schema.define(version: 2021_04_25_114329) do
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "rehabilitation_id"
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_122636) do
     t.integer "rehabilitation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reply_comment"
   end
 
   create_table "rehabilitations", force: :cascade do |t|
@@ -54,4 +56,5 @@ ActiveRecord::Schema.define(version: 2021_04_12_122636) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 end
