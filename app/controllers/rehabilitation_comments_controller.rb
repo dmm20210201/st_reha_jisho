@@ -4,7 +4,9 @@ class RehabilitationCommentsController < ApplicationController
     @new_rehabilitation_comment = RehabilitationComment.new
     comment = current_user.rehabilitation_comments.new(rehabilitation_comment_params)
     comment.rehabilitation_id = @rehabilitation.id
-    comment.save
+    if comment.save
+      comment.create_notification(Rehabilitation.find(comment.rehabilitation_id).user_id, current_user.id, comment.id)
+    end
   end
 
   def destroy
