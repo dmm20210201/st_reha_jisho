@@ -31,6 +31,12 @@
             </div>
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
+                <% if @notifications.exists? %>
+                  <li class="nav-item">
+                    <%= link_to '', user_path(current_user.id), class: 'far fa-bell' %>
+                  </li>
+                  <% else %>
+                <% end %>
                 <li class="nav-item">
                   <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark fas fa-smile' %>
                 </li>
