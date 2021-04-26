@@ -48,6 +48,7 @@
           </tr>
         </thead>
         <tbody>
+          <!--同率順位の場合、次の順位は同率数の次の数字でランキング-->
           <% last_favorite = 0 %>
           <% j_favorite = 1 %>
           <% @favorite_ranks.each.with_index(1) do |ranking, i| %>
@@ -89,6 +90,7 @@
           </tr>
         </thead>
         <tbody>
+          <!--同率順位の場合、次の順位は同率数の次の数字でランキング-->
           <% last_comment = 0 %>
           <% j_comment= 1 %>
           <% @comment_ranks.each.with_index(1) do |ranking, i| %>

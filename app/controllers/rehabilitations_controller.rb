@@ -5,6 +5,7 @@ class RehabilitationsController < ApplicationController
     unless params[:q]
       @rehabilitations = Rehabilitation.all.page(params[:page]).reverse_order
     end
+    # いいね、コメント5位までのランキング
     @favorite_ranks = Rehabilitation.find(Favorite.group(:rehabilitation_id).order('count(rehabilitation_id) desc').limit(5).pluck(:rehabilitation_id))
     @comment_ranks = Rehabilitation.find(RehabilitationComment.group(:rehabilitation_id).order('count(rehabilitation_id) desc').limit(5).pluck(:rehabilitation_id))
   end
