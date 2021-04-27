@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @rehabilitations = @user.rehabilitations.page(params[:page]).reverse_order
     @notifications = Notification.where(checked: false, visited_id: current_user.id)
-    if !@notifications.blank?
+    if @notifications.present?
       @notifications.each do |notification|
         notification.update_attributes(checked: true)
       end

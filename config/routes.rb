@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about'
   resources :users, only: [:show, :edit, :update, :destroy]
-    resources :notifications
+  resources :notifications
   resources :rehabilitations, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :rehabilitation_comments, only: [:create, :destroy]

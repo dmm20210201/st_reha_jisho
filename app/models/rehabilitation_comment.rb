@@ -10,9 +10,8 @@ class RehabilitationComment < ApplicationRecord
       visiter_id: visiter_id,
       visited_id: visited_id,
       rehabilitation_comment_id: comment_id,
-      checked: false
+      checked: false,
     })
     notification.save
   end
-
 end

@@ -38,12 +38,5 @@ https://docs.google.com/spreadsheets/d/1DmkLpfkkH3PyR6l5MX85vu5F-ZKrM8Ufrzb-VjIK
 
 ## 使用素材
 
-・ぱくたそ https://www.pakutaso.com/
 ・O-DAN https://o-dan.net/ja/
-・morguefile https://morguefile.com/photos/morguefile/1/pop
-・Font Free https://fontfree.me/
 ・イラスト AC https://www.ac-illust.com/
-・ICOOON MONO https://icooon-mono.com/
-
-<!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。 -->
-<!-- - 使用しない場合は、使用素材の項目を README から削除してください。 -->
