@@ -31,11 +31,10 @@
             </div>
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <% if @notifications.exists? %>
+                <% if !Notification.where(checked: false, visited_id: current_user.id).blank? %>
                   <li class="nav-item">
-                    <%= link_to '', user_path(current_user.id), class: 'far fa-bell' %>
+                    <%= link_to '', user_path(current_user.id), class: 'fas fa-bell' %>
                   </li>
-                  <% else %>
                 <% end %>
                 <li class="nav-item">
                   <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark fas fa-smile' %>

@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @rehabilitations = @user.rehabilitations.page(params[:page]).reverse_order
+    @notifications = Notification.where(checked: false, visited_id: current_user.id)
+    if !@notifications.blank?
+      @notifications.each do |notification|
+        notification.update_attributes(checked: true)
+      end
+    end
   end
 
   def edit
