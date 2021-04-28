@@ -8,19 +8,19 @@
         </div>
         <p>
           <strong>言語病理学的所見</strong><br>
-          &emsp;<%= @rehabilitation.speech_pathological_findings %>
+          <%= @rehabilitation.speech_pathological_findings %>
         </p>
         <p>
           <strong>適応・注意事項</strong><br>
-          &emsp;<%= @rehabilitation.adaptation_precautions %>
+          <%= @rehabilitation.adaptation_precautions %>
         </p>
         <p>
           <strong>準備物</strong><br>
-          &emsp;<%= @rehabilitation.items %>
+          <%= @rehabilitation.items %>
         </p>
         <p>
           <strong>訓練内容</strong><br>
-          &emsp;<%= @rehabilitation.training_content %>
+          <%= safe_join(@rehabilitation.training_content.split("\n"), tag(:br)) %>
         </p>
         <p><%= attachment_image_tag @rehabilitation, :training_image %></p>
         <p>投稿日時：<%= @rehabilitation.created_at.to_s(:datetime) %></p>
