@@ -30,7 +30,7 @@ https://docs.google.com/spreadsheets/d/1DmkLpfkkH3PyR6l5MX85vu5F-ZKrM8Ufrzb-VjIK
 
 ## 開発環境
 
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
