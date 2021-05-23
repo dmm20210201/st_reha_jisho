@@ -1,0 +1,9 @@
+FactoryBot.define do
+  factory :rehabilitaion do
+    training_name { Faker::Lorem.characters(number:5) }
+    speech_pathological_findings { Faker::Lorem.characters(number:5) }
+    adaptation_precautions { Faker::Lorem.characters(number:10) }
+    items { Faker::Lorem.characters(number:10) }
+    training_content { Faker::Lorem.characters(number:30) }
+  end
+end
