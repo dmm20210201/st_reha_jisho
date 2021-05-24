@@ -16,8 +16,8 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
-  validates :name, length: { maximum: 20, minimum: 2 }, presence: true
-  validates :name_kana, length: { maximum: 20, minimum: 2 }, presence: true
+  validates :name, presence: true, length: { maximum: 20, minimum: 2 }
+  validates :name_kana, presence: true, length: { maximum: 20, minimum: 2 }
   validates :affiliation, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true
   validates :introduction, length: { maximum: 50 }
